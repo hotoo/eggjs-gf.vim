@@ -18,6 +18,15 @@ This plugin is better work in with [jsgf.vim](https://github.com/hotoo/jsgf.vim)
 
 `gf` to open the define file which eggjs controller, service, proxy, enums path under the cursor.
 
+### Options
+
+Maybe you need `g:eggjs_gf_loadpath` option in .vimrc
+
+```
+" https://eggjs.org/zh-cn/advanced/loader.html#loadtocontext
+let g:eggjs_gf_loadpath = 'service\|proxy\|model\|someVar'
+```
+
 ## LICENSE
 
 [The MIT License (MIT)](https://hotoo.mit-license.org/)

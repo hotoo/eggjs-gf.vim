@@ -5,11 +5,16 @@ function! ReplaceProxyPath(fname)
   " app.controller
   let filePath = substitute(a:fname, '\(\(this\.\)\?app\.\)\?\(controllers\?\)\.\([a-zA-Z0-9\._]\+\)\.\w\+$', 'controllers/\4', '')
 
+  " https://eggjs.org/zh-cn/advanced/loader.html#loadtocontext
+  if !exists('g:eggjs_gf_loadpath')
+    let g:eggjs_gf_loadpath = 'service\|proxy'
+  endif
+
   " TODO:
   " 如果文件不存在，还需要将驼峰替换成下划线，
   " 如果有多个驼峰，甚至需要各种组合形式的尝试。Egg 真坑。
   " ctx.service, ctx.proxy
-  let filePath = substitute(filePath, '\(\(this\.\)\?ctx\.\)\?\(service\|proxy\)\.\([a-zA-Z0-9_\$\.]\+\)\.[a-zA-Z0-9_\$]\+$', '\3/\4', '')
+  let filePath = substitute(filePath, '\(\(this\.\)\?ctx\.\)\?\('. g:eggjs_gf_loadpath .')\.\([a-zA-Z0-9_\$\.]\+\)\.[a-zA-Z0-9_\$]\+$', '\3/\4', '')
   let filePath = substitute(filePath, '\.', '/', 'g')
   return filePath
 endfunction

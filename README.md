@@ -16,7 +16,7 @@ This plugin is better work in with [jsgf.vim](https://github.com/hotoo/jsgf.vim)
 
 ## USAGE
 
-`gf` to open the define file which path under the cursor.
+`gf` to open the define file which eggjs controller, service, proxy, enums path under the cursor.
 
 ## LICENSE
 

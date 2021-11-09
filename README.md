@@ -12,6 +12,8 @@ By [Vundle](https://github.com/VundleVim/Vundle.vim)
 Plugin 'hotoo/eggjs-gf.vim'
 ```
 
+This plugin is better work in with [jsgf.vim](https://github.com/hotoo/jsgf.vim) .
+
 ## USAGE
 
 `gf` to open the define file which path under the cursor.

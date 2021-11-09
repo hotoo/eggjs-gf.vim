@@ -22,7 +22,7 @@ This plugin is better work in with [jsgf.vim](https://github.com/hotoo/jsgf.vim)
 
 Maybe you need `g:eggjs_gf_loadpath` option in .vimrc
 
-```
+```viml
 " https://eggjs.org/zh-cn/advanced/loader.html#loadtocontext
 let g:eggjs_gf_loadpath = 'service\|proxy\|model\|someVar'
 ```

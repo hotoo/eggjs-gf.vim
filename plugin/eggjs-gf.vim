@@ -19,7 +19,7 @@ function! ReplaceProxyPath(fname)
   " ctx.service:
   " - this.ctx.service.${filePathName}.${methodName}
   " + app/service/${facadeName}.js
-  let filePath = substitute(filePath, '\(\(this\.\)\?ctx\.\)\?\('. g:eggjs_gf_loadpath .'\)\.\([a-zA-Z0-9_\$\.]\+\)\.[a-zA-Z0-9_\$]\+$', '\3/\4', '')
+  let filePath = substitute(filePath, '\(\(this\.\)\?ctx\.\|this\.\)\?\('. g:eggjs_gf_loadpath .'\)\.\([a-zA-Z0-9_\$\.]\+\)\.[a-zA-Z0-9_\$]\+$', '\3/\4', '')
   let filePath = substitute(filePath, '\.', '/', 'g')
 
   " Enum:

@@ -6,9 +6,17 @@ Vim goto file for [eggjs](https://github.com/eggjs), support router, controllers
 
 ## INSTALL
 
+By vim-plug:
+
+```viml
+Plug 'hotoo/jsgf.vim'
+Plug 'hotoo/eggjs-gf.vim'
+```
+
 By [Vundle](https://github.com/VundleVim/Vundle.vim)
 
 ```viml
+Plugin 'hotoo/jsgf.vim'
 Plugin 'hotoo/eggjs-gf.vim'
 ```
 

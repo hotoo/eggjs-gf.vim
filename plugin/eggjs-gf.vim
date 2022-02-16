@@ -3,6 +3,14 @@ if !exists('g:eggjs_gf_loadpath')
   let g:eggjs_gf_loadpath = 'service\|proxy'
 endif
 
+function! GetPlusCmd(methodName)
+  let plus_cmd_func = '\\(^\\|\\s\\)' . a:methodName . '\\s*('
+  let plus_cmd_exports = '\\<exports\\.' . a:methodName . '\\s*='
+  let plus_cmd = '+/\\(' . plus_cmd_func . '\\)\\|\\(' . plus_cmd_exports . '\\)/'
+  " let plus_cmd = '+/\\<' . a:methodName . '\\s*(/ '
+  return plus_cmd
+endfunction
+
 function! ReplaceProxyPath(fname)
   " TODO:
   " 如果文件不存在，还需要将驼峰替换成下划线，
@@ -16,13 +24,13 @@ function! ReplaceProxyPath(fname)
   " - this.ctx.service.${filePathName}.${methodName}
   " + app/service/${facadeName}.js
   let re_eggjs = '\(\(this\.\)\?ctx\.\|this\.\)\?\('. g:eggjs_gf_loadpath .'\)\.\([a-zA-Z0-9_\$\.]\+\)\.\([a-zA-Z0-9_\$]\+\)$'
+
   if matchstr(a:fname, re_eggjs) != ''
     let filePath = substitute(a:fname, re_eggjs, '\3/\4', '')
     let filePath = substitute(filePath, '\.', '/', 'g')
 
     let methodName = substitute(a:fname, re_eggjs, '\5', '')
-    let b:jsgf_plus_cmd = '+/\\(^\\|\\s\\)' . methodName . '\\s*(/'
-    " let b:jsgf_plus_cmd = '+/\\<' . methodName . '\\s*(/ '
+    let b:jsgf_plus_cmd = GetPlusCmd(methodName)
 
     return filePath
   endif
@@ -39,8 +47,7 @@ function! ReplaceProxyPath(fname)
     let filePath = substitute(filePath, '\.', '/', 'g')
 
     let methodName = substitute(a:fname, re_controller, '\5', '')
-    let b:jsgf_plus_cmd = '+/\\(^\\|\\s\\)' . methodName . '\\s*(/'
-    " let b:jsgf_plus_cmd = '+/\\<' . methodName . '\s*(/ '
+    let b:jsgf_plus_cmd = GetPlusCmd(methodName)
 
     return filePath
   endif

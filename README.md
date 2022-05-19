@@ -9,8 +9,8 @@ Vim goto file for [eggjs](https://github.com/eggjs), support router, controllers
 By vim-plug:
 
 ```viml
-Plug 'hotoo/jsgf.vim'
-Plug 'hotoo/eggjs-gf.vim'
+Plug 'hotoo/jsgf.vim', { 'for': ['javascript', 'javascriptreat', 'typescript', 'typescriptreact', 'json'] }
+Plug 'hotoo/eggjs-gf.vim', { 'for': ['javascript', 'typescript'] }
 ```
 
 By [Vundle](https://github.com/VundleVim/Vundle.vim)
